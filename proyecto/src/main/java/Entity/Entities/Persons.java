@@ -22,6 +22,6 @@ public class Persons extends GenericId {
     private String phone;
     @Column(name = "email", length = 100, nullable = false)
     private String email;
-    @Column(name = "employee",nullable = false)
+    @Column(name = "employee", nullable = false)
     private Boolean employee;
 }

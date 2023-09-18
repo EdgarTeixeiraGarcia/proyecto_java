@@ -2,18 +2,18 @@ package Entity.Entities;
 
 import Entity.Components.GenericId;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "person_object")
-public class Person_object extends GenericId {
+public class PersonObject extends GenericId {
 
-    @Column(name = "id_person")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_person", nullable = false)
     private String idPerson;
-    @Column(name = "id_object")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_object", nullable = false)
     private String idObject;
     @Column(name = "time", nullable = false)
     private LocalDateTime time;
