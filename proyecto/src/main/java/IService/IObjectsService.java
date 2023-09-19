@@ -21,4 +21,6 @@ public interface IObjectsService {
 
     // Método encargado de elimiar un registro
     void delete(Long id);
+
+    Integer getTotalObjectPerson(Long idPerson);
 }

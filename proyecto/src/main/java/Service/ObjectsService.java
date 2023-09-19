@@ -49,4 +49,14 @@ public class ObjectsService implements IObjectsService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    /**
+     * @param idPerson id de la persona
+     */
+    @Override
+    public Integer getTotalObjectPerson(Long idPerson) {
+        return repository.totalObjectsPerson(idPerson);
+    }
+
+
 }
