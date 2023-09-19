@@ -1,5 +1,7 @@
 package Entity.Entities;
 
+import DTO.PersonObjectDTO;
+import DTO.TypeOfObjectDTO;
 import Entity.Components.GenericId;
 
 import javax.persistence.Column;
@@ -19,5 +21,11 @@ public class TypeOfObject extends GenericId {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TypeOfObjectDTO toDTO() {
+        return new TypeOfObjectDTO(
+                this.getId(),
+                this.getName());
     }
 }

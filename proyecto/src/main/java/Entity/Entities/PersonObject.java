@@ -1,5 +1,7 @@
 package Entity.Entities;
 
+import DTO.ObjectDTO;
+import DTO.PersonObjectDTO;
 import Entity.Components.GenericId;
 
 import javax.persistence.*;
@@ -60,5 +62,13 @@ public class PersonObject extends GenericId {
 
     public void setError(Boolean error) {
         this.error = error;
+    }
+
+    public PersonObjectDTO toDTO() {
+        return new PersonObjectDTO(
+                this.getId(),
+                this.getTime(),
+                this.getRegisterType(),
+                this.getError());
     }
 }

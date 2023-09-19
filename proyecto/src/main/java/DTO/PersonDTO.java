@@ -1,31 +1,33 @@
-package Entity.Entities;
+package DTO;
 
-import DTO.ObjectDTO;
-import DTO.PersonDTO;
-import Entity.Components.GenericId;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "persons")
-public class Person extends GenericId {
-
-    @Column(name = "name", length = 50, nullable = false)
+public class PersonDTO {
+    private Long id;
     private String name;
-    @Column(name = " first_surname", length = 50, nullable = false)
     private String firstSurname;
-    @Column(name = "second_surname", length = 50, nullable = false)
     private String secondSurname;
-    @Column(name = "dni", length = 9, nullable = false)
     private String dni;
-    @Column(name = "phone", length = 20, nullable = false)
     private String phone;
-    @Column(name = "email", length = 100, nullable = false)
     private String email;
-    @Column(name = "employee", nullable = false)
     private Boolean employee;
+
+    public PersonDTO(Long id, String name, String firstSurname, String secondSurname, String dni, String phone, String email, Boolean employee) {
+        this.id = id;
+        this.name = name;
+        this.firstSurname = firstSurname;
+        this.secondSurname = secondSurname;
+        this.dni = dni;
+        this.phone = phone;
+        this.email = email;
+        this.employee = employee;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -82,17 +84,4 @@ public class Person extends GenericId {
     public void setEmployee(Boolean employee) {
         this.employee = employee;
     }
-    public PersonDTO toDTO() {
-        return new PersonDTO(
-                this.getId(),
-                this.getName(),
-                this.getFirstSurname(),
-                this.getSecondSurname(),
-                this.getDni(),
-                this.getPhone(),
-                this.getEmail(),
-                this.getEmployee());
-    }
-
-
 }
