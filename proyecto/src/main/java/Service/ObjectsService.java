@@ -1,6 +1,6 @@
 package Service;
 
-import Entity.Entities.Objects;
+import Entity.Entities.Object;
 import IRepository.IObjectsRepository;
 import IService.IObjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +13,40 @@ public class ObjectsService implements IObjectsService {
     @Autowired
     private IObjectsRepository repository;
     @Override
-    public List<Objects> all() {
+    public List<Object> all() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<Objects> findById(Long id) {
+    public Optional<Object> findById(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public Objects save(Objects objects) {
-        return null;
+    public Object save(Object objects) {
+        return repository.save(objects);
     }
 
     @Override
-    public void update(Long id, Objects objects) {
+    public void update(Long id, Object object) {
+        //op es el objeto que va validar si existe un registro con el id que llega por parametro [id]
+        Optional<Object> op = repository.findById(id);
+
+        if(op.isEmpty()){
+            System.out.println("Dato no encontrado");
+        }else {
+            Object objectUpdate = op.get();
+            objectUpdate.setDescription(object.getDescription());
+            objectUpdate.setReason(object.getReason());
+            objectUpdate.setState(object.getState());
+
+            repository.save(objectUpdate);
+        }
 
     }
 
     @Override
     public void delete(Long id) {
-
+        repository.deleteById(id);
     }
 }

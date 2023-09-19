@@ -1,6 +1,6 @@
 package IRepository;
 
-import Entity.Entities.Objects;
+import Entity.Entities.Object;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IObjectsRepository extends JpaRepository<Objects, Long> {
+public interface IObjectsRepository extends JpaRepository<Object, Long> {
 
     //Construir métodos personalizados - en este espacio se puede construir sql native.
 
@@ -19,7 +19,7 @@ public interface IObjectsRepository extends JpaRepository<Objects, Long> {
             " * " +
             "FROM " +
             " objects" , nativeQuery = true)
-    List<Objects> selectAllObjects();
+    List<Object> selectAllObjects();
 
 
 }

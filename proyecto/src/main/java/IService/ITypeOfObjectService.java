@@ -1,6 +1,5 @@
 package IService;
 
-import Entity.Entities.Objects;
 import Entity.Entities.TypeOfObject;
 
 import java.util.List;
